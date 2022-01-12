@@ -10,7 +10,7 @@ const server = http.createServer(app)
 const io = new Server(server, {
     cors: {
         // origin: "https://react-chat-demo-1.netlify.app/",
-        origin: "*",
+        origin: "http://localhost:3002",
         methods: ["GET", "POST"]
     }
 })
