@@ -7,12 +7,15 @@ app.use(cors())
 
 const server = http.createServer(app)
 
-const io = new Server(server, {
-    cors: {
-        // origin: "https://react-chat-demo-1.netlify.app/",
-        origin: "http://localhost:3002",
-        methods: ["GET", "POST"]
-    }
+const io = new Server('', {
+    path: '/socket.io',
+    transports: ['websocket'],
+    secure: true,
+    // cors: {
+    //     // origin: "https://react-chat-demo-1.netlify.app/",
+    //     origin: "http://localhost:3002",
+    //     methods: ["GET", "POST"]
+    // }
 })
 
 io.on("connection", (socket) => {
@@ -25,7 +28,7 @@ io.on("connection", (socket) => {
 
     socket.on("send_message", (data) => {
         console.log(`message: ${data}  `);
-        socket.to(data.room).emit("receive_message",data)
+        socket.to(data.room).emit("receive_message", data)
     })
 
     socket.on("disconnect", () => {
