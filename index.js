@@ -1,22 +1,22 @@
 const express = require('express')
 const app = express()
-const http = require('http')
+// const http = require('http')
 const cors = require('cors')
-const { Server } = require('socket.io')(http)
+const { Server } = require('socket.io')
 app.use(cors())
 
-const server = http.createServer(app)
+// const server = http.createServer(app)
 
 const io = new Server('', {
-    allowEIO3: true, // false by default
+    // allowEIO3: true, // false by default
     // path: '/socket.io',
     // transports: ['websocket'],
     // secure: true,
-    // cors: {
-    //     origin: "https://react-socket-io.vercel.app/",
-    //     // origin: "http://localhost:3002",
-    //     methods: ["GET", "POST"]
-    // }
+    cors: {
+        origin: "https://react-socket-io.vercel.app/",
+        // origin: "http://localhost:3002",
+        methods: ["GET", "POST"]
+    }
 })
 
 io.on("connection", (socket) => {
@@ -37,6 +37,10 @@ io.on("connection", (socket) => {
     })
 })
 
-server.listen(5000, () => {
+app.listen(5000, () => {
     console.log(`server is running on ${5000}`);
 })
+
+// server.listen(5000, () => {
+//     console.log(`server is running on ${5000}`);
+// })
