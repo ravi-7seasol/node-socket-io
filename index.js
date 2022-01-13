@@ -8,14 +8,15 @@ app.use(cors())
 const server = http.createServer(app)
 
 const io = new Server('', {
+    allowEIO3: true, // false by default
     // path: '/socket.io',
     // transports: ['websocket'],
     // secure: true,
-    cors: {
-        origin: "https://react-socket-io.vercel.app/",
-        // origin: "http://localhost:3002",
-        methods: ["GET", "POST"]
-    }
+    // cors: {
+    //     origin: "https://react-socket-io.vercel.app/",
+    //     // origin: "http://localhost:3002",
+    //     methods: ["GET", "POST"]
+    // }
 })
 
 io.on("connection", (socket) => {
