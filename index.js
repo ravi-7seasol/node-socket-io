@@ -13,7 +13,7 @@ const io = new Server(server, {
     // transports: ['websocket'],
     // secure: true,
     cors: {
-        origin: "https://react-socket-io.vercel.app/",
+        origin: "https://react-socket-io.vercel.app:5000/",
         // origin: "http://localhost:3002",
         methods: ["GET", "POST"]
     }
