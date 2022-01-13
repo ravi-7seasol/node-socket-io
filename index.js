@@ -8,14 +8,14 @@ app.use(cors())
 const server = http.createServer(app)
 
 const io = new Server('', {
-    path: '/socket.io',
-    transports: ['websocket'],
-    secure: true,
-    // cors: {
-    //     // origin: "https://react-chat-demo-1.netlify.app/",
-    //     origin: "http://localhost:3002",
-    //     methods: ["GET", "POST"]
-    // }
+    // path: '/socket.io',
+    // transports: ['websocket'],
+    // secure: true,
+    cors: {
+        origin: "https://react-socket-io.vercel.app/",
+        // origin: "http://localhost:3002",
+        methods: ["GET", "POST"]
+    }
 })
 
 io.on("connection", (socket) => {
