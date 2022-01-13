@@ -9,9 +9,9 @@ const server = http.createServer(app)
 
 const io = new Server(server, {
     // allowEIO3: true, // false by default
-    path: '/socket.io',
+    // path: '/socket.io',
     // transports: ['websocket'],
-    secure: true,
+    // secure: true,
     cors: {
         origin: "https://react-socket-io.vercel.app/",
         // origin: "http://localhost:3002",
