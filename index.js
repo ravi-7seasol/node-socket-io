@@ -1,13 +1,13 @@
 const express = require('express')
 const app = express()
-// const http = require('http')
+const http = require('http')
 const cors = require('cors')
 const { Server } = require('socket.io')
 app.use(cors())
 
-// const server = http.createServer(app)
+const server = http.createServer(app)
 
-const io = new Server('', {
+const io = new Server(server, {
     // allowEIO3: true, // false by default
     // path: '/socket.io',
     // transports: ['websocket'],
@@ -37,10 +37,10 @@ io.on("connection", (socket) => {
     })
 })
 
-app.listen(5000, () => {
-    console.log(`server is running on ${5000}`);
-})
-
-// server.listen(5000, () => {
+// app.listen(5000, () => {
 //     console.log(`server is running on ${5000}`);
 // })
+
+server.listen(5000, () => {
+    console.log(`server is running on ${5000}`);
+})
